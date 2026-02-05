@@ -34,11 +34,15 @@ from tools.xss_scanner import XSSScanner
 from tools.packet_sniffer import PacketSniffer
 from tools.firewall_analyzer import FirewallRulesAnalyzer
 from tools.audit_log_analyzer import AuditLogAnalyzer
+from tools.directory_traversal_scanner import DirectoryTraversalScanner
+from tools.command_injection_tester import CommandInjectionTester
+from tools.cors_analyzer import CORSAnalyzer
 from utils.logger import Logger
 from .settings import SettingsDialog
 from .stylesheet import get_stylesheet
 from .blockchain_analyzer_tab import BlockchainAnalyzerTab
 from .reverse_dns_tab import ReverseDNSTab
+from .offensive_tools_tabs import SQLInjectionTab, DirectoryTraversalTab, CommandInjectionTab, CORSTab
 
 logger = Logger.get_logger("MainWindow")
 APP_VERSION = "2.3.0"
@@ -171,7 +175,12 @@ class MainWindow(QMainWindow):
                 'HTTP Headers',
                 'Vuln Scanner',
                 'SQL Injection',
-                'XSS Scanner'
+                'XSS Scanner',
+                'Directory Traversal',
+                'CORS Analyzer'
+            ],
+            'Offensive Testing': [
+                'Command Injection'
             ],
             'Threat Detection': [
                 'DDoS Analyzer',
@@ -248,8 +257,13 @@ class MainWindow(QMainWindow):
         self.content.addWidget(SimpleToolTab("SSL/TLS Analyzer", "Analyze SSL certificates"))
         self.content.addWidget(SimpleToolTab("HTTP Headers Analyzer", "Inspect HTTP response headers"))
         self.content.addWidget(SimpleToolTab("Vulnerability Scanner", "Scan for web vulnerabilities"))
-        self.content.addWidget(SimpleToolTab("SQL Injection Tester", "Test for SQL injection flaws"))
+        self.content.addWidget(SQLInjectionTab())
         self.content.addWidget(SimpleToolTab("XSS Scanner", "Detect cross-site scripting vulnerabilities"))
+        self.content.addWidget(DirectoryTraversalTab())
+        self.content.addWidget(CORSTab())
+        
+        # Offensive Testing
+        self.content.addWidget(CommandInjectionTab())
         
         # Threat Detection
         self.content.addWidget(SimpleToolTab("DDoS Analyzer", "Analyze DDoS attack patterns"))
