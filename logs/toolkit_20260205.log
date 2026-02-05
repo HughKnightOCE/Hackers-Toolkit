@@ -1,0 +1,13 @@
+2026-02-05 15:30:15,705 - HackersToolkit - INFO - Created reports directory: reports
+2026-02-05 15:30:15,705 - HackersToolkit - WARNING - whois module not installed. Install with: pip install whois
+2026-02-05 15:30:15,706 - HackersToolkit - INFO - Default CVE database created
+2026-02-05 15:30:25,436 - HackersToolkit - INFO - CVE database loaded
+2026-02-05 15:32:22,093 - HackersToolkit - WARNING - whois module not installed. Install with: pip install whois
+2026-02-05 15:32:22,093 - HackersToolkit - INFO - CVE database loaded
+2026-02-05 15:32:22,093 - HackersToolkit - INFO - CVE database loaded
+2026-02-05 15:33:59,435 - HackersToolkit - INFO - Password analyzed - Strength: Very Strong
+2026-02-05 15:34:05,912 - HackersToolkit - INFO - Password analyzed - Strength: Very Strong
+2026-02-05 15:34:13,053 - HackersToolkit - WARNING - whois module not installed. Install with: pip install whois
+2026-02-05 15:34:13,054 - HackersToolkit - INFO - CVE database loaded
+2026-02-05 15:54:39,247 - HackersToolkit - WARNING - whois module not installed. Install with: pip install whois
+2026-02-05 15:54:39,248 - HackersToolkit - INFO - CVE database loaded
