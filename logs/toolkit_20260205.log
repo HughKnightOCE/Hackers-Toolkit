@@ -11,3 +11,19 @@
 2026-02-05 15:34:13,054 - HackersToolkit - INFO - CVE database loaded
 2026-02-05 15:54:39,247 - HackersToolkit - WARNING - whois module not installed. Install with: pip install whois
 2026-02-05 15:54:39,248 - HackersToolkit - INFO - CVE database loaded
+2026-02-05 15:56:31,456 - HackersToolkit - INFO - Starting Hackers Toolkit
+2026-02-05 15:56:31,484 - HackersToolkit - INFO - Hackers Toolkit started
+2026-02-05 15:56:31,853 - HackersToolkit - WARNING - whois module not installed. Install with: pip install whois
+2026-02-05 15:56:31,853 - HackersToolkit - INFO - CVE database loaded
+2026-02-05 16:13:40,521 - HackersToolkit - INFO - IP info retrieved for 177.197.96.47
+2026-02-05 16:13:47,411 - HackersToolkit - INFO - IP info retrieved for 50.163.53.227
+2026-02-05 16:13:49,018 - HackersToolkit - INFO - IP reputation check for 50.163.53.227
+2026-02-05 16:13:54,589 - HackersToolkit - INFO - IP info retrieved for 146.211.74.108
+2026-02-05 16:14:18,111 - HackersToolkit - INFO - Password analyzed - Strength: Very Strong
+2026-02-05 16:19:22,467 - MainWindow - INFO - Starting Hackers Toolkit v2.2.0
+2026-02-05 16:19:22,627 - MainWindow - ERROR - Application error: arguments did not match any overloaded call:
+  addTab(self, widget: Optional[QWidget], a1: Optional[str]): argument 1 has unexpected type 'method'
+  addTab(self, widget: Optional[QWidget], icon: QIcon, label: Optional[str]): argument 1 has unexpected type 'method'
+2026-02-05 16:19:46,093 - MainWindow - INFO - Starting Hackers Toolkit v2.2.0
+2026-02-05 16:19:46,268 - MainWindow - WARNING - whois module not installed. Install with: pip install whois
+2026-02-05 16:19:46,269 - MainWindow - INFO - CVE database loaded

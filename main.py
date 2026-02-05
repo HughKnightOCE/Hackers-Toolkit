@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Hackers Toolkit - Main Application Launcher
-Professional Cybersecurity Analysis Platform
+Professional Cybersecurity Analysis Platform - v2.2.0
 """
 
 import sys
@@ -11,12 +11,12 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 
 from PyQt5.QtWidgets import QApplication
-from gui.main_window import MainWindow
+from gui.main_window_modern import MainWindow
 from utils.logger import Logger
 
 def main():
     """Main application entry point"""
-    Logger.info("Starting Hackers Toolkit")
+    Logger.info("Starting Hackers Toolkit v2.2.0")
     
     try:
         app = QApplication(sys.argv)
