@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache
+.cache/
+*.cache
+
+# Virtual environments
+venv*/
+env*/
+
+# AI-generated patterns (remove these)
+# Do not commit auto-generated comment blocks
+# Exclude overly polished AI-style docstrings that don't match development patterns
+
+# Pytest
+.pytest_cache/
+.coverage
+
+# Reports
+reports/
+
+# Temporary files
+*.tmp
+*.temp
+*_old.*
+
+# OS specific
+Thumbs.db
+.DS_Store
+
+# Node modules (if any JS present)
+node_modules/
+
+# Development notes (internal only)
+notes/
+scratch/
+TODO_*.md

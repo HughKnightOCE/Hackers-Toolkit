@@ -1,67 +1,69 @@
 """
-Blockchain Address Analyzer - Cryptocurrency Address Analysis Tool
-Analyzes Bitcoin, Ethereum, and other blockchain addresses
+Blockchain Address Analyzer
+Cryptocurrency address lookup and analysis tool
 """
 
 import requests
-import json
 from datetime import datetime
 from utils.logger import Logger
 from utils.validators import Validators
 
+logger = Logger.get_logger("BlockchainAnalyzer")
+
+
 class BlockchainAnalyzer:
-    """Analyze blockchain addresses and transactions"""
+    """Handle blockchain address lookups"""
     
     def __init__(self):
-        self.logger = Logger()
         self.validators = Validators()
-        
+    
     def analyze_bitcoin_address(self, address):
-        """
-        Analyze Bitcoin address using blockchain.com API
+        """Query Bitcoin address info from blockchain.com"""
         
-        Args:
-            address: Bitcoin address to analyze
-            
-        Returns:
-            dict: Address information
-        """
+        if not self._is_valid_bitcoin_address(address):
+            return {"success": False, "error": "Invalid address"}
+        
         try:
-            if not self._is_valid_bitcoin_address(address):
-                return {"error": "Invalid Bitcoin address format"}
+            # Get balance
+            balance_url = f"https://blockchain.info/q/addressbalance/{address}"
+            balance_resp = requests.get(balance_url, timeout=5)
             
-            # Using blockchain.com API (free tier)
-            url = f"https://blockchain.info/q/addressbalance/{address}"
-            try:
-                response = requests.get(url, timeout=5)
-                balance = response.text.strip()
-                
-                # Get more details
-                details_url = f"https://blockchain.info/address/{address}?format=json"
-                details = requests.get(details_url, timeout=5).json()
+            if balance_resp.status_code != 200:
+                return {"success": False, "error": "API error"}
+            
+            balance_satoshi = balance_resp.text.strip()
+            
+            # Get full details
+            details_url = f"https://blockchain.info/address/{address}?format=json"
+            details_resp = requests.get(details_url, timeout=5)
+            
+            if details_resp.status_code == 200:
+                data = details_resp.json()
+                btc_balance = float(balance_satoshi) / 100000000 if balance_satoshi.isdigit() else 0
                 
                 return {
+                    "success": True,
                     "address": address,
-                    "balance_satoshi": balance,
-                    "balance_btc": float(balance) / 100000000 if balance.isdigit() else 0,
-                    "total_received": details.get('total_received', 0) / 100000000,
-                    "total_sent": details.get('total_sent', 0) / 100000000,
-                    "transaction_count": details.get('n_tx', 0),
-                    "final_balance": details.get('final_balance', 0) / 100000000,
+                    "btc_balance": round(btc_balance, 8),
+                    "satoshi": balance_satoshi,
+                    "received": round(data.get('total_received', 0) / 100000000, 8),
+                    "sent": round(data.get('total_sent', 0) / 100000000, 8),
+                    "transactions": data.get('n_tx', 0),
+                    "final_balance": round(data.get('final_balance', 0) / 100000000, 8),
                     "timestamp": datetime.now().isoformat(),
                     "type": "Bitcoin"
                 }
-            except requests.exceptions.RequestException:
-                return {
-                    "address": address,
-                    "type": "Bitcoin",
-                    "note": "API unavailable - address format valid",
-                    "format_valid": True
-                }
+        except requests.exceptions.RequestException:
+            return {
+                "success": False,
+                "address": address,
+                "type": "Bitcoin",
+                "error": "API request failed"
+            }
                 
         except Exception as e:
-            self.logger.error(f"Bitcoin analysis error: {str(e)}")
-            return {"error": str(e)}
+            logger.error(f"Bitcoin analysis error: {str(e)}")
+            return {"success": False, "error": str(e)}
     
     def analyze_ethereum_address(self, address):
         """
@@ -88,8 +90,8 @@ class BlockchainAnalyzer:
             }
             
         except Exception as e:
-            self.logger.error(f"Ethereum analysis error: {str(e)}")
-            return {"error": str(e)}
+            logger.error(f"Ethereum analysis error: {str(e)}")
+            return {"success": False, "error": str(e)}
     
     def detect_address_type(self, address):
         """

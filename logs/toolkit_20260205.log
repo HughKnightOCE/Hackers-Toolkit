@@ -30,3 +30,4 @@
 2026-02-05 16:28:46,928 - MainWindow - INFO - Starting Hackers Toolkit v2.2.0
 2026-02-05 16:28:47,103 - MainWindow - WARNING - whois module not installed. Install with: pip install whois
 2026-02-05 16:28:47,104 - MainWindow - INFO - CVE database loaded
+2026-02-05 16:42:04,054 - BlockchainAnalyzer - INFO - Launching Hackers Toolkit v2.3.0
